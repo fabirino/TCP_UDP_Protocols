@@ -25,7 +25,7 @@ void sigint(int num) {
     write(fd, "DESISTO", 20);
     recv(fd, buffer, BUF_SIZE, 0);
 
-    printf("%s", &buffer[1]);// "\n**** user* ganhou****"
+    printf("%s", &buffer[1]); // "\n**** user* ganhou****"
     close(fd);
     exit(0);
 }
@@ -90,7 +90,7 @@ int main(int argc, char *argv[]) {
             play_no++;
 
         } else {
-            signal(SIGINT, sigint);
+
             memset(buffer, 0, BUF_SIZE);
             recv(fd, buffer, BUF_SIZE, 0);
 
@@ -105,7 +105,7 @@ int main(int argc, char *argv[]) {
             memset(buffer, 0, BUF_SIZE);
             recv(fd, buffer, BUF_SIZE, 0);
             printf("Servidor: %s", buffer);
-
+            signal(SIGINT, sigint);
             memset(buffer, 0, BUF_SIZE);
             scanf("%s", &buffer[0]);
             write(fd, buffer, BUF_SIZE);
